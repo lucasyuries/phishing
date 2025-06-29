@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualização de Segurança - Banco XYZ</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ebee; /* Cor de fundo mais suave */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Sombra mais destacada */
+            width: 100%;
+            max-width: 480px; /* Largura um pouco maior */
+            text-align: center;
+        }
+        .header {
+            margin-bottom: 30px;
+        }
+        .header img {
+            width: 120px; /* Tamanho para um logo, se for adicionar */
+            margin-bottom: 15px;
+        }
+        .header h1 {
+            color: #0056b3;
+            font-size: 30px; /* AUMENTADO */
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .header p {
+            color: #555;
+            font-size: 16px; /* AUMENTADO */
+            line-height: 1.5;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500; /* Levemente mais bold */
+            font-size: 15px; /* AUMENTADO */
+        }
+        .form-group input[type="text"],
+        .form-group input[type="password"] {
+            width: calc(100% - 24px); /* Ajuste para padding */
+            padding: 12px;
+            border: 1px solid #c9d0d6; /* Borda mais suave */
+            border-radius: 6px; /* Borda levemente mais arredondada */
+            font-size: 17px; /* AUMENTADO */
+            box-sizing: border-box; /* Garante que padding não aumente o width total */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-group input[type="text"]:focus,
+        .form-group input[type="password"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Efeito de foco */
+            outline: none; /* Remove o contorno padrão do navegador */
+        }
+        .form-columns {
+            display: flex;
+            gap: 15px; /* Espaçamento entre as colunas */
+        }
+        .form-columns .form-group {
+            flex: 1; /* Faz as colunas ocuparem o mesmo espaço */
+        }
+        .button-submit {
+            width: 100%;
+            padding: 15px; /* Botão maior */
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 20px; /* AUMENTADO */
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 15px; /* Espaço maior acima do botão */
+        }
+        .button-submit:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px); /* Efeito de leve levantamento */
+        }
+        .button-submit:active {
+            transform: translateY(0);
+        }
+        .footer-text {
+            margin-top: 25px;
+            font-size: 14px; /* AUMENTADO */
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Atualização Cadastral Obrigatória</h1>
+            <p>Identificamos atividades incomuns em sua conta. Por segurança, o acesso foi bloqueado. Por favor, preencha os campos abaixo para desbloquear e verificar suas informações.</p>
+        </div>
+        
+        <form id="phishingForm">
+            <div class="form-group">
+                <label for="emailCpf">E-mail ou CPF:</label>
+                <input type="text" id="emailCpf" name="emailCpf" required placeholder="Seu e-mail ou CPF">
+            </div>
+            <div class="form-group">
+                <label for="currentPassword">Senha atual:</label>
+                <input type="password" id="currentPassword" name="currentPassword" required placeholder="Digite sua senha atual">
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirmar senha atual:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirme sua senha atual">
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;"> <p style="font-size: 15px; color: #666; margin-bottom: 20px;">Informações do Cartão (Opcional para desbloqueio imediato)</p> <div class="form-group">
+                <label for="cardNumber">Número do cartão:</label>
+                <input type="text" id="cardNumber" name="cardNumber" placeholder="xxxx xxxx xxxx xxxx">
+            </div>
+            <div class="form-columns">
+                <div class="form-group">
+                    <label for="cardValidity">Validade do cartão (MM/AAAA):</label>
+                    <input type="text" id="cardValidity" name="cardValidity" placeholder="MM/AAAA">
+                </div>
+                <div class="form-group">
+                    <label for="cvv">Código de segurança (CVV):</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="CVV">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Telefone para contato:</label>
+                <input type="text" id="phone" name="phone" placeholder="(XX) XXXXX-XXXX">
+            </div>
+            
+            <button type="button" class="button-submit" id="updateButton">Atualizar Dados e Desbloquear</button>
+        </form>
+
+        <div class="footer-text">
+            Sua segurança é nossa prioridade. Nunca compartilharemos seus dados com terceiros.
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const updateButton = document.getElementById('updateButton');
+            updateButton.addEventListener('click', function() {
+                window.location.href = 'awareness.html';
+            });
+        });
+    </script>
+</body>
+</html>
