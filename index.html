@@ -37,10 +37,6 @@
             width: 220px; /* AUMENTADO: Deixei a logo maior. Ajuste este valor se precisar. */
             height: auto; /* Mantém a proporção da imagem */
             margin-bottom: 20px;
-            /* Lembre-se: o ideal é usar uma logo PNG com fundo transparente. */
-            /* Os filtros abaixo são tentativas se a imagem tiver fundo indesejado: */
-            /* filter: brightness(2) contrast(1.5); */
-            /* filter: drop-shadow(0 0 5px rgba(255,255,255,0.8)); */
         }
         .header h1 {
             color: #4A148C; /* Título principal é ROXO BMG */
@@ -68,7 +64,7 @@
         .form-group input[type="password"] {
             width: calc(100% - 24px);
             padding: 12px;
-            border: 1px solid #c9d0d6; /* Borda padrão, ou ajuste para um laranja mais escuro se quiser */
+            border: 1px solid #c9d0d6;
             border-radius: 6px;
             font-size: 17px;
             box-sizing: border-box;
@@ -176,10 +172,53 @@
     </div>
 
     <script>
+        // Função para registrar a ação no PHP
+        function registrarAcao(acao) {
+            // MUITO IMPORTANTE: Substitua 'phishing' pelo nome EXATO da sua pasta dentro de 'htdocs'
+            // Como você confirmou que a pasta é 'phishing', esta linha já está correta.
+            const nomePastaProjeto = 'phishing'; 
+            
+            fetch(`http://localhost/${nomePastaProjeto}/registrar_log.php?acao=${acao}`, {
+                method: 'GET', // Usamos GET pois estamos apenas enviando um tipo de ação na URL
+                mode: 'no-cors' // 'no-cors' é usado para evitar problemas de CORS em requisições simples
+            })
+            .then(response => {
+                // console.log('Log enviado!'); // Descomente para depurar no console do navegador (F12)
+            })
+            .catch(error => {
+                // console.error('Erro ao enviar log:', error); // Descomente para depurar erros (F12)
+            });
+        }
+
+        // Este código será executado assim que a página HTML for completamente carregada
         document.addEventListener('DOMContentLoaded', function() {
+            // --- 1. REGISTRAR ABERTURA DA PÁGINA (VISITA) ---
+            // Chamamos a função 'registrarAcao' assim que a página carrega.
+            // Isso registra que alguém abriu o link, mesmo que não interaja.
+            registrarAcao('pagina_aberta');
+
+            // --- 2. REGISTRAR TENTATIVA DE PREENCHIMENTO/SUBMISSÃO ---
             const updateButton = document.getElementById('updateButton');
+            // Adiciona um "ouvinte" de evento ao botão de "Atualizar Dados"
             updateButton.addEventListener('click', function() {
-                window.location.href = 'awareness.html';
+                // Pega os valores dos campos de e-mail/CPF e senha
+                const emailCpf = document.getElementById('emailCpf').value;
+                const currentPassword = document.getElementById('currentPassword').value;
+
+                // Verifica se algum dos campos principais foi preenchido
+                if (emailCpf !== '' || currentPassword !== '') {
+                    // Se sim, registra como uma 'tentativa_preenchimento'
+                    registrarAcao('tentativa_preenchimento');
+                } else {
+                    // Se não, registra como um 'clique_sem_preencher'
+                    registrarAcao('clique_sem_preencher');
+                }
+                
+                // Redireciona para a página de conscientização APÓS tentar registrar o log.
+                // O pequeno atraso (100ms) é para dar tempo ao navegador de enviar a requisição do log.
+                setTimeout(() => { 
+                    window.location.href = 'awareness.html';
+                }, 100); 
             });
         });
     </script>
