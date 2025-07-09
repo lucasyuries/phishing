@@ -5,15 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atualização de Segurança - Banco BMG</title>
     <style>
-        /* Cores do BMG: */
-        /* Laranja BMG: #FF8C00 */
-        /* Roxo BMG: #4A148C */
-        /* Branco: #FFFFFF (para fundo da página) */
-        /* Cinzas para textos secundários */
-
+       
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f2f5; /* Fundo da página branco ou quase branco */
+            background-color: #f0f2f5; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -22,10 +17,10 @@
             color: #333;
         }
         .container {
-            background-color: #FF8C00; /* A box do formulário agora é o LARANJA BMG */
+            background-color: #FF8C00; 
             padding: 40px;
             border-radius: 10px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); /* Sombra para destacar a box */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); 
             width: 100%;
             max-width: 480px;
             text-align: center;
@@ -34,18 +29,18 @@
             margin-bottom: 30px;
         }
         .header img {
-            width: 220px; /* AUMENTADO: Deixei a logo maior. Ajuste este valor se precisar. */
-            height: auto; /* Mantém a proporção da imagem */
+            width: 220px; 
+            height: auto; 
             margin-bottom: 20px;
         }
         .header h1 {
-            color: #4A148C; /* Título principal é ROXO BMG */
+            color: #4A148C; 
             font-size: 30px;
             margin-bottom: 10px;
             font-weight: 700;
         }
         .header p {
-            color: #FFFFFF; /* Parágrafo BRANCO para contrastar com o fundo laranja */
+            color: #FFFFFF;
             font-size: 16px;
             line-height: 1.5;
         }
@@ -56,7 +51,7 @@
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            color: #4A148C; /* Rótulos dos campos são ROXO BMG */
+            color: #4A148C; 
             font-weight: 600;
             font-size: 15px;
         }
@@ -68,14 +63,14 @@
             border-radius: 6px;
             font-size: 17px;
             box-sizing: border-box;
-            background-color: #FFFFFF; /* Fundo dos campos de input branco para facilitar preenchimento */
-            color: #333; /* Texto dentro do input escuro */
+            background-color: #FFFFFF; 
+            color: #333; 
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
         .form-group input[type="text"]:focus,
         .form-group input[type="password"]:focus {
-            border-color: #4A148C; /* Borda ROXA BMG no foco */
-            box-shadow: 0 0 0 3px rgba(74, 20, 140, 0.25); /* Sombra de foco roxa */
+            border-color: #4A148C; 
+            box-shadow: 0 0 0 3px rgba(74, 20, 140, 0.25); 
             outline: none;
         }
         .form-columns {
@@ -88,7 +83,7 @@
         .button-submit {
             width: 100%;
             padding: 15px;
-            background-color: #4A148C; /* Botão agora é ROXO BMG */
+            background-color: #4A148C; 
             color: white;
             border: none;
             border-radius: 6px;
@@ -99,7 +94,7 @@
             margin-top: 25px;
         }
         .button-submit:hover {
-            background-color: #6A1B9A; /* Roxo um pouco mais claro no hover */
+            background-color: #6A1B9A; 
             transform: translateY(-2px);
         }
         .button-submit:active {
@@ -107,15 +102,25 @@
         }
         .card-info-header {
             font-size: 16px;
-            color: #FFFFFF; /* Texto BRANCO para contrastar com o fundo laranja */
+            color: #FFFFFF; 
             margin-top: 30px;
             margin-bottom: 20px;
             font-weight: 500;
         }
-        .footer-text {
-            margin-top: 25px;
-            font-size: 14px;
-            color: #FFFFFF; /* Texto BRANCO para contrastar com o fundo laranja */
+       
+        .footer-copyright {
+            margin-top: 25px; 
+            font-size: 13px; 
+            color: rgba(255, 255, 255, 0.8); 
+            line-height: 1.4;
+        }
+        .footer-copyright a {
+            color: inherit; 
+            text-decoration: none; 
+            font-weight: 500;
+        }
+        .footer-copyright a:hover {
+            text-decoration: underline; 
         }
     </style>
 </head>
@@ -166,56 +171,42 @@
             <button type="button" class="button-submit" id="updateButton">Atualizar Dados e Continuar</button>
         </form>
 
-        <div class="footer-text">
-            Sua segurança é nossa prioridade. Nunca compartilharemos seus dados com terceiros.
+        <div class="footer-copyright">
+            © 2025 Banco BMG S.A. Todos os direitos reservados. <br>
+            CNPJ: 00.932.074/0001-17
         </div>
-    </div>
+        </div>
 
     <script>
-        // Função para registrar a ação no PHP
         function registrarAcao(acao) {
-            // MUITO IMPORTANTE: Substitua 'phishing' pelo nome EXATO da sua pasta dentro de 'htdocs'
-            // Como você confirmou que a pasta é 'phishing', esta linha já está correta.
             const nomePastaProjeto = 'phishing'; 
             
             fetch(`http://localhost/${nomePastaProjeto}/registrar_log.php?acao=${acao}`, {
-                method: 'GET', // Usamos GET pois estamos apenas enviando um tipo de ação na URL
-                mode: 'no-cors' // 'no-cors' é usado para evitar problemas de CORS em requisições simples
+                method: 'GET', 
+                mode: 'no-cors' 
             })
             .then(response => {
-                // console.log('Log enviado!'); // Descomente para depurar no console do navegador (F12)
+                // console.log('Log enviado!'); 
             })
             .catch(error => {
-                // console.error('Erro ao enviar log:', error); // Descomente para depurar erros (F12)
+                // console.error('Erro ao enviar log:', error); 
             });
         }
 
-        // Este código será executado assim que a página HTML for completamente carregada
         document.addEventListener('DOMContentLoaded', function() {
-            // --- 1. REGISTRAR ABERTURA DA PÁGINA (VISITA) ---
-            // Chamamos a função 'registrarAcao' assim que a página carrega.
-            // Isso registra que alguém abriu o link, mesmo que não interaja.
             registrarAcao('pagina_aberta');
 
-            // --- 2. REGISTRAR TENTATIVA DE PREENCHIMENTO/SUBMISSÃO ---
             const updateButton = document.getElementById('updateButton');
-            // Adiciona um "ouvinte" de evento ao botão de "Atualizar Dados"
             updateButton.addEventListener('click', function() {
-                // Pega os valores dos campos de e-mail/CPF e senha
                 const emailCpf = document.getElementById('emailCpf').value;
                 const currentPassword = document.getElementById('currentPassword').value;
 
-                // Verifica se algum dos campos principais foi preenchido
                 if (emailCpf !== '' || currentPassword !== '') {
-                    // Se sim, registra como uma 'tentativa_preenchimento'
                     registrarAcao('tentativa_preenchimento');
                 } else {
-                    // Se não, registra como um 'clique_sem_preencher'
                     registrarAcao('clique_sem_preencher');
                 }
                 
-                // Redireciona para a página de conscientização APÓS tentar registrar o log.
-                // O pequeno atraso (100ms) é para dar tempo ao navegador de enviar a requisição do log.
                 setTimeout(() => { 
                     window.location.href = 'awareness.html';
                 }, 100); 
@@ -223,4 +214,5 @@
         });
     </script>
 </body>
+</html>
 </html>
